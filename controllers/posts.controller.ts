@@ -4,9 +4,10 @@ export const getPosts = ( req: Request , res: Response ) => {
 
     const { id } = req.params;
 
-    res.json({
+    res.status(200).json({
         msg: 'getPost',
         id
     });
+    
 }
 

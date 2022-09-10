@@ -23,7 +23,7 @@ const postRecord = (req, res) => {
 exports.postRecord = postRecord;
 const putRecord = (req, res) => {
     const { id } = req.params;
-    const { body } = req;
+    const { body } = req.body;
     res.json({
         msg: 'Put record'
     });

@@ -2,6 +2,8 @@ import express, { Application } from 'express';
 import postRoutes from '../routes/posts.routes';
 import recordsRouter from '../routes/records.routes';
 import userRouter from '../routes/users.routes';
+import cors from 'cors';
+import dbConnection from '../db/db.config';
 
 export default class Server {
 
@@ -16,7 +18,21 @@ export default class Server {
     constructor() {
         this._app = express();
         this._port = process.env.PORT || '8080';
+        // CONEXION A BASE DE DATOS
+        this.database();
+        // MIDDLEWARES DE LA APLICACIÓN
+        this.middleWares();
+        // RUTAS DE LA APLICACIÓN
         this.routes();
+    }
+
+    async database() {
+        await dbConnection();
+    }
+
+    middleWares(){
+        this._app.use( cors({}) );
+        this._app.use( express.json() );
     }
 
     routes() {
