@@ -1,0 +1,23 @@
+{
+  "name": "ts-prueba-tecnica",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RenAlejo/APP-Jsonplaceholder.git"
+  },
+  "keywords": [
+    "Jsonplaceholder",
+    "API"
+  ],
+  "author": "RenAlejo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RenAlejo/APP-Jsonplaceholder/issues"
+  },
+  "homepage": "https://github.com/RenAlejo/APP-Jsonplaceholder#readme"
+}
