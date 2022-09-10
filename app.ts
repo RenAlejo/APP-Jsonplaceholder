@@ -1,4 +1,6 @@
+import dotenv from 'dotenv';
+import Server from './models/server';
 
-export const helloWorld = 'helloWorld';
-
-console.log(helloWorld);
+const server = new Server();
+dotenv.config();
+server.listen();
