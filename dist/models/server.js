@@ -13,16 +13,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const posts_routes_1 = __importDefault(require("../routes/posts.routes"));
 const records_routes_1 = __importDefault(require("../routes/records.routes"));
 const users_routes_1 = __importDefault(require("../routes/users.routes"));
 const cors_1 = __importDefault(require("cors"));
 const db_config_1 = __importDefault(require("../db/db.config"));
+const safe_1 = __importDefault(require("colors/safe"));
 class Server {
     constructor() {
         this._paths = {
             users: '/api/users',
-            posts: '/api/posts',
             records: '/api/records',
         };
         this._app = (0, express_1.default)();
@@ -45,12 +44,11 @@ class Server {
     }
     routes() {
         this._app.use(this._paths.users, users_routes_1.default);
-        this._app.use(this._paths.posts, posts_routes_1.default);
         this._app.use(this._paths.records, records_routes_1.default);
     }
     listen() {
         this._app.listen(this._port, () => {
-            console.log('Server listening on port: ' + this._port);
+            console.log(safe_1.default.bgMagenta('Server listening on port: ' + this._port));
         });
     }
 }

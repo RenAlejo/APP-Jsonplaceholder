@@ -1,9 +1,10 @@
 import express, { Application } from 'express';
-import postRoutes from '../routes/posts.routes';
 import recordsRouter from '../routes/records.routes';
 import userRouter from '../routes/users.routes';
 import cors from 'cors';
 import dbConnection from '../db/db.config';
+import colors from 'colors/safe';
+
 
 export default class Server {
 
@@ -11,7 +12,6 @@ export default class Server {
     private _port   : string;
     private _paths  = {
         users   : '/api/users',
-        posts   : '/api/posts',
         records : '/api/records',
     }
 
@@ -37,13 +37,12 @@ export default class Server {
 
     routes() {
         this._app.use( this._paths.users , userRouter );
-        this._app.use( this._paths.posts , postRoutes );
         this._app.use( this._paths.records , recordsRouter );
     }
 
     listen(){
         this._app.listen( this._port , () => {
-            console.log('Server listening on port: ' +  this._port );
+            console.log(colors.bgMagenta('Server listening on port: ' +  this._port));
         });
     }
 

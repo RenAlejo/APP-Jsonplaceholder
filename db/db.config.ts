@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import colors from 'colors/safe';
 
-
 const dbConnection = async():Promise<void> => {
     
     try {
@@ -16,6 +15,7 @@ const dbConnection = async():Promise<void> => {
     } catch(err){
         throw new Error("Error establishing a database connection")
     }
+    
 }
 
 
