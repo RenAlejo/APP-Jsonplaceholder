@@ -30,7 +30,7 @@ export const getUsers = async ( req: Request , res: Response ) => {
 export const getSingleUser = async ( req: Request , res: Response ) => {
 
     const { id } = req.params;
-    const users:User[] = await http.get(  process.env.API_JPH_URL!+'/todos' ).then( users => users ); 
+    const users:Users[] = await http.get(  process.env.API_JPH_URL!+'/users' ).then( users => users ); 
 
     if(!users){
         return res.status(404).json({
@@ -39,7 +39,7 @@ export const getSingleUser = async ( req: Request , res: Response ) => {
     }
 
     const user = users.find( user => {
-        if( user.userId == Number(id)) {
+        if( user.id == Number(id)) {
             return user;
         }
     });

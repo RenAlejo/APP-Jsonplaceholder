@@ -1,0 +1,364 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "App Prueba Tecnica",
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api/",
+    "tags": [
+        {
+            "name": "APP PRUEBA TECNICA"
+        }
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/records": {
+            "get": {
+                "tags": [
+                    "Obtener Registros"
+                ],
+                "summary": "Obtener todos los registros",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Record"
+                        }
+                    }
+                }
+            }
+        },
+        "/records/b64/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "Id de MongoDB correspondiente a un registro existente",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Obtener registro codificado en base64"
+                ],
+                "summary": "Obtener un solo registro",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Record"
+                        }
+                    }
+                }
+            }
+        },
+        "/records/": {
+            "post": {
+                "tags": [
+                    "Insertar un nuevo registro"
+                ],
+                "summary": "Obtener un solo registro",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Registro",
+                        "schema": {
+                            "$ref": "#/definitions/Record"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Record"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/BadRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/records/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "Id de MongoDB correspondiente a un registro existente",
+                    "type": "string"
+                }
+            ],
+            "put": {
+                "tags": [
+                    "Actualizar un registro existente"
+                ],
+                "summary": "Actualizar registro",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Registro",
+                        "schema": {
+                            "$ref": "#/definitions/Record"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Record"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/BadRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/records/{recordid}": {
+            "parameters": [
+                {
+                    "name": "recordid",
+                    "in": "path",
+                    "required": true,
+                    "description": "Id de MongoDB correspondiente a un registro existente",
+                    "type": "string"
+                }
+            ],
+            "delete": {
+                "tags": [
+                    "Borrar registro"
+                ],
+                "summary": "Borrar registro",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Record"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/BadRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "Obtener todos los usuarios"
+                ],
+                "summary": "Obtener todos los usuarios",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "Id de un usuario existente",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Obtener un solo usuario"
+                ],
+                "summary": "Obtener un solo usuario",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Record"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/photo/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "Id de un usuario existente",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Obtener las fotos de un usuario"
+                ],
+                "summary": "Obtener las fotos de un usuario",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Photos"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/posts/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "Id de un usuario existente",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Obtener los posts de un usuario"
+                ],
+                "summary": "Obtener los posts de un usuario",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Post"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "id": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "Record": {
+            "properties": {
+                "date": {
+                    "type": "string"
+                },
+                "method": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "object"
+                },
+                "active": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "User": {
+            "properties": {
+                "id": {
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "object"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "website": {
+                    "type": "string"
+                },
+                "company": {
+                    "type": "object"
+                }
+            }
+        },
+        "Post": {
+            "properties": {
+                "userId": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "number"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "body": {
+                    "type": "string"
+                }
+            }
+        },
+        "Photos": {
+            "properties": {
+                "userId": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "number"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "BadRequest": {
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "param": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

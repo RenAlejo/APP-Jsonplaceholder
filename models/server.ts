@@ -4,7 +4,8 @@ import userRouter from '../routes/users.routes';
 import cors from 'cors';
 import dbConnection from '../db/db.config';
 import colors from 'colors/safe';
-
+import swaggerUi from 'swagger-ui-express';
+import * as swaggerDocument from './../swagger.json';
 
 export default class Server {
 
@@ -13,6 +14,7 @@ export default class Server {
     private _paths  = {
         users   : '/api/users',
         records : '/api/records',
+        swagger : '/api/swagger',
     }
 
     constructor() {
@@ -38,6 +40,7 @@ export default class Server {
     routes() {
         this._app.use( this._paths.users , userRouter );
         this._app.use( this._paths.records , recordsRouter );
+        this._app.use( this._paths.swagger , swaggerUi.serve, swaggerUi.setup(swaggerDocument));
     }
 
     listen(){

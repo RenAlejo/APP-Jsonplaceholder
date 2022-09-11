@@ -35,14 +35,14 @@ const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.getUsers = getUsers;
 const getSingleUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const users = yield http.get(process.env.API_JPH_URL + '/todos').then(users => users);
+    const users = yield http.get(process.env.API_JPH_URL + '/users').then(users => users);
     if (!users) {
         return res.status(404).json({
             msg: "No se encontrarón usuarios"
         });
     }
     const user = users.find(user => {
-        if (user.userId == Number(id)) {
+        if (user.id == Number(id)) {
             return user;
         }
     });
