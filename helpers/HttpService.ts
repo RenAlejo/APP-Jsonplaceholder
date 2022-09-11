@@ -9,23 +9,18 @@ export default class HttpService {
     }
 
     async get( api_url: string ) {
+
         return this.http.get( api_url )
-        .then( resp => {
-            const { data } = resp;
-            return data;
-        } )
-        .catch( err => {
-            return err
-        })
+        .then( ( { data }:any ) => data )
+        .catch( ( err ) => err );
+
     } 
 
     async post( api_url: string, body:Object ) {
-        return this.http.post( api_url, body ).then( resp => {
-            const { data } = resp;
-            return data;
-        }).catch( err => {
-            return err
-        })
+
+        return this.http.post( api_url, body )
+        .then( ( { data }:any ) =>  data )
+        .catch( ( err ) => err );
 
     }
 

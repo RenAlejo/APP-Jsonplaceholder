@@ -20,23 +20,15 @@ class HttpService {
     get(api_url) {
         return __awaiter(this, void 0, void 0, function* () {
             return this.http.get(api_url)
-                .then(resp => {
-                const { data } = resp;
-                return data;
-            })
-                .catch(err => {
-                return err;
-            });
+                .then(({ data }) => data)
+                .catch((err) => err);
         });
     }
     post(api_url, body) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.http.post(api_url, body).then(resp => {
-                const { data } = resp;
-                return data;
-            }).catch(err => {
-                return err;
-            });
+            return this.http.post(api_url, body)
+                .then(({ data }) => data)
+                .catch((err) => err);
         });
     }
 }
