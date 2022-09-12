@@ -79,7 +79,7 @@ export const getUserPhotos = async ( req: Request , res: Response ) => {
         }
     });
 
-    if(!photos){
+    if( photos.length === 0 ){
         return res.status(404).json({
             msg:`No se encontraron fotos`
         });
@@ -114,7 +114,7 @@ export const getUserPosts = async ( req: Request , res: Response ) => {
         }
     });
 
-    if(!post){
+    if( post.length === 0 ){
         return res.status(404).json({
             msg:`No se encontraron publicaciones`
         });

@@ -74,7 +74,7 @@ const getUserPhotos = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             return photos;
         }
     });
-    if (!photos) {
+    if (photos.length === 0) {
         return res.status(404).json({
             msg: `No se encontraron fotos`
         });
@@ -102,7 +102,7 @@ const getUserPosts = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             return post;
         }
     });
-    if (!post) {
+    if (post.length === 0) {
         return res.status(404).json({
             msg: `No se encontraron publicaciones`
         });
